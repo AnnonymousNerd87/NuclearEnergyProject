@@ -446,7 +446,7 @@ const powerUps = {
         },
         effect() {
             powerUps.animatePowerUpGrab('rgba(255, 119, 187,0.3)')
-            powerUps.research.changeRerolls(1)
+            powerUps.research.changeRerolls(0)
         },
         isMakingBots: false, //to prevent bot fabrication from running 2 sessions at once
         changeRerolls(amount) {
@@ -944,7 +944,7 @@ const powerUps = {
                 }
                 // console.log(options.length)
                 if (options.length > 0 || !tech.isSuperDeterminism) {
-                    let totalChoices = 2 + tech.extraChoices + 2 * (m.fieldMode === 8)
+                    let totalChoices = 1 + tech.extraChoices + 2 * (m.fieldMode === 8)
                     if (tech.isCancelTech && tech.cancelTechCount === 1) {
                         totalChoices *= 3
                         tech.cancelTechCount++
@@ -1093,7 +1093,7 @@ const powerUps = {
                 }
                 //set total choices
                 // let totalChoices = (tech.isDeterminism ? 1 : 3 + tech.extraChoices + 2 * (m.fieldMode === 8))
-                let totalChoices = 3 + tech.extraChoices + 2 * (m.fieldMode === 8)
+                let totalChoices = 1 + tech.extraChoices + 2 * (m.fieldMode === 8)
                 if (tech.isCancelTech && tech.cancelTechCount === 1) {
                     totalChoices *= 3
                     tech.cancelTechCount++
