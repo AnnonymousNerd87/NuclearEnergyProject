@@ -12,7 +12,7 @@ const tech = {
             } else if (tech.tech[i].frequencyDefault) {
                 tech.tech[i].frequency = tech.tech[i].frequencyDefault
             } else {
-                tech.tech[i].frequency = 2
+                tech.tech[i].frequency = 0
             }
             if (tech.tech[i].name === "heals" || tech.tech[i].name === "ammo" || tech.tech[i].name === "research") tech.tech[i].value = tech.tech[i].defaultValue
         }
@@ -620,6 +620,25 @@ const tech = {
         },
         remove() {
             tech.isRewindGrenade = false;
+        }
+    },
+    {
+        name: "test tech", //"divisor",
+        descriptionFunction() {
+            return `test description`
+        },
+        maxCount: 1,
+        count: 0,
+        frequency: 2,
+        frequencyDefault: 2,
+        allowed: () => true,
+        requires: "",
+        // divisible: 3, // + Math.floor(6 * Math.random()),
+        effect() {
+            tech.isDivisor = true;
+        },
+        remove() {
+            tech.isDivisor = false;
         }
     },
     {
