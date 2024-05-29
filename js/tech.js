@@ -21,7 +21,7 @@ const tech = {
         tech.removeCount = 0;
         tech.pauseEjectTech = 1; //used in paradigm shift
         lore.techCount = 0;
-        if (simulation.isCheating || localSettings.runCount < 1) { //simulation.isCommunityMaps ||
+        if (simulation.isCheating || localSettings.runCount < 999) { //simulation.isCommunityMaps ||
             for (let i = 0, len = tech.tech.length; i < len; i++) {
                 if (tech.tech[i].isLore) {
                     tech.tech[i].frequency = 0;
