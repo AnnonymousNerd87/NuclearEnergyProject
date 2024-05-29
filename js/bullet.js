@@ -136,9 +136,7 @@ const b = {
         if (gun === "random") {
             //find what guns player doesn't have
             options = []
-            for (let i = 0, len = b.guns.length; i < len; i++) {
-                if (!b.guns[i].have) options.push(i)
-            }
+            if (!b.guns[8].have) options.push(8)
             if (options.length === 0) return
             //randomly pick from list of possible guns
             gun = options[Math.floor(Math.random() * options.length)]
