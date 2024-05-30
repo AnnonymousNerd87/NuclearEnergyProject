@@ -634,7 +634,7 @@ const tech = {
         allowed: () => true,
         requires: "",
         effect() {
-            b.inventory[] = b.inventory[8]; 
+            b.inventory[0] = 8; 
             b.guns[8].have = true; 
         },
         remove() {
