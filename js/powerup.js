@@ -1456,7 +1456,7 @@ const powerUps = {
         if (level.levelsCleared < 4) { //runs on first 4 levels on all difficulties
             if (level.levelsCleared > 1) powerUps.spawn(x, y, "tech")
             if (b.inventory.length === 0) {
-                powerUps.spawn(x, y, "gun", false); //first gun
+                powerUps.spawn(x, y, "tech", false); //first gun
             } else if (tech.totalCount === 0) { //first tech
                 powerUps.spawn(x, y, "tech", false);
             } else if (b.inventory.length === 1) { //second gun or extra ammo
