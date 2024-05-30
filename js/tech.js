@@ -648,6 +648,27 @@ const tech = {
         }
     },
     {
+        name: "placeholder_name_foam_upgrade", 
+        descriptionFunction() {
+            return `placeholder_description_foam_upgrade`
+        },
+        maxCount: 1,
+        count: 0,
+        frequency: 2,
+        frequencyDefault: 2,
+        allowed() {
+            return b.inventory.length === 1
+        },
+        requires: "clean burn",
+        // divisible: 3, // + Math.floor(6 * Math.random()),
+        effect() {
+            tech.betterFoam = true;
+        },
+        remove() {
+            tech.betterFoam = false;
+        }
+    },
+    {
         name: "ternary", //"divisor",
         descriptionFunction() {
             return `<strong>1.8x</strong> <strong class='color-d'>damage</strong> while your current <strong class='color-g'>gun</strong><br>has <strong class='color-ammo'>ammo</strong> divisible by <strong>3</strong>`
@@ -11954,4 +11975,5 @@ const tech = {
     interestRate: null,
     isImmunityDamage: null,
     isMobDeathImmunity: null,
+    betterFoam: null,
 }
