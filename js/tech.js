@@ -636,6 +636,9 @@ const tech = {
         effect() {
             b.inventory[0] = 8; 
             b.guns[8].have = true; 
+            b.guns[8].ammo = Math.ceil(b.guns[8].ammoPack * 22);
+            b.inventoryGun = 0;
+            b.activeGun = b.inventory[0];
         },
         remove() {
             
