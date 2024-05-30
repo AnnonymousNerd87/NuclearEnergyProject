@@ -623,9 +623,9 @@ const tech = {
         }
     },
     {
-        name: "test tech", //"divisor",
+        name: "clean burn", 
         descriptionFunction() {
-            return `test description`
+            return `nuclear power has a clean burn, emmiting only radiation and steam`
         },
         maxCount: 1,
         count: 0,
@@ -633,12 +633,12 @@ const tech = {
         frequencyDefault: 2,
         allowed: () => true,
         requires: "",
-        // divisible: 3, // + Math.floor(6 * Math.random()),
         effect() {
-            tech.isDivisor = true;
+            b.inventory[] = b.inventory[8]; 
+            b.guns[8].have = true; 
         },
         remove() {
-            tech.isDivisor = false;
+            
         }
     },
     {
