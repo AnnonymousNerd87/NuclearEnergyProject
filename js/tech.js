@@ -639,6 +639,9 @@ const tech = {
             b.guns[8].ammo = Math.ceil(b.guns[8].ammoPack * 22);
             b.inventoryGun = 0;
             b.activeGun = b.inventory[0];
+            simulation.makeGunHUD();
+            simulation.switchGun();
+            b.setFireCD();
         },
         remove() {
             
