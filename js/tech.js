@@ -652,7 +652,7 @@ const tech = {
         descriptionFunction() {
             return `placeholder_description_foam_upgrade`
         },
-        maxCount: 9,
+        maxCount: 2586,
         count: 0,
         frequency: 2,
         frequencyDefault: 2,
