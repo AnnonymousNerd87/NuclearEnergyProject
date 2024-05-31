@@ -7274,13 +7274,17 @@ const b = {
                     0.23 * (Math.random() - 0.5) + 0.15 * Math.sin(m.cycle * 0.24)
                 )
                 const radius = 5 + 8 * Math.random() + (tech.isAmmoFoamSize && this.ammo < 300) * 12
-                const SPEED = (m.crouch ? 1.2 : 1) * Math.max(2, 14 - radius * 0.25) * (1.5 * tech.betterFoam)
+                const SPEED = (m.crouch ? 1.2 : 1) * Math.max(2, 14 - radius * 0.25) + (3 * tech.betterFoam)
                 const dir = m.angle + 0.15 * (Math.random() - 0.5)
                 const velocity = { x: SPEED * Math.cos(dir), y: SPEED * Math.sin(dir) }
                 const position = { x: m.pos.x + 30 * Math.cos(m.angle), y: m.pos.y + 30 * Math.sin(m.angle) }
                 b.foam(position, Vector.rotate(velocity, spread), radius)
                 this.applyKnock(velocity)
-                m.fireCDcycle = m.cycle + Math.floor(1.5 * b.fireCDscale) / (2 * tech.betterFoam);
+                if (tech.betterFoam) {
+                    m.fireCDcycle = m.cycle + Math.floor(1.5 * b.fireCDscale) / 2;
+                } else {
+                    m.fireCDcycle = m.cycle + Math.floor(1.5 * b.fireCDscale);
+                }
             },
             doCharges() {
                 if (this.charge > 0) {
