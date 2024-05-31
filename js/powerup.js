@@ -1408,10 +1408,8 @@ const powerUps = {
             function powerUpChance(chanceToFail) {
                 if (Math.random() * chanceToFail < powerUps.randomPowerUpCounter) {
                     powerUps.randomPowerUpCounter = 0;
-                    if (Math.random() < 0.97) {
+                    if (Math.random() < 0.3) {
                         powerUps.spawn(x, y, "tech")
-                    } else {
-                        powerUps.spawn(x, y, "gun")
                     }
                 } else {
                     if (m.health < 0.65 && !tech.isEnergyHealth) {
@@ -1453,18 +1451,14 @@ const powerUps = {
         }
     },
     spawnStartingPowerUps(x, y) { //used for map specific power ups, mostly to give player a starting gun
-        if (level.levelsCleared < 4) { //runs on first 4 levels on all difficulties
+        if (level.levelsCleared < 2) { //runs on first 4 levels on all difficulties
             if (level.levelsCleared > 1) powerUps.spawn(x, y, "tech")
             if (b.inventory.length === 0) {
                 powerUps.spawn(x, y, "tech", false); //first gun
             } else if (tech.totalCount === 0) { //first tech
                 powerUps.spawn(x, y, "tech", false);
             } else if (b.inventory.length === 1) { //second gun or extra ammo
-                if (Math.random() < 0.4) {
-                    powerUps.spawn(x, y, "gun", false);
-                } else {
-                    for (let i = 0; i < 5; i++) powerUps.spawn(x, y, "ammo", false);
-                }
+                for (let i = 0; i < 5; i++) powerUps.spawn(x, y, "ammo", false);
             } else {
                 for (let i = 0; i < 4; i++) powerUps.spawnRandomPowerUp(x, y);
             }
