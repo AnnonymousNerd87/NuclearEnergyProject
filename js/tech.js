@@ -652,7 +652,7 @@ const tech = {
         descriptionFunction() {
             return `placeholder_description_foam_upgrade`
         },
-        maxCount: 1,
+        maxCount: 9,
         count: 0,
         frequency: 2,
         frequencyDefault: 2,
@@ -662,10 +662,10 @@ const tech = {
         requires: "clean burn",
         // divisible: 3, // + Math.floor(6 * Math.random()),
         effect() {
-            tech.betterFoam = true;
+            tech.betterFoam++;
         },
         remove() {
-            tech.betterFoam = false;
+            tech.betterFoam = 0;
         }
     },
     {
@@ -11975,5 +11975,5 @@ const tech = {
     interestRate: null,
     isImmunityDamage: null,
     isMobDeathImmunity: null,
-    betterFoam: null,
+    betterFoam: 0,
 }
