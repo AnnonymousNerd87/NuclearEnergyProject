@@ -4101,14 +4101,17 @@ const b = {
             velocity = Vector.mult(velocity, 1.35)
             radius = 1.2 * radius + 13
         }
+        if (tech.betterFoam) {
+            radius = 1.2 * radius + 13
+        }
         // radius *= Math.sqrt(tech.bulletSize)
         const me = bullet.length;
         bullet[me] = Bodies.polygon(position.x, position.y, 20, radius, {
             density: 0.000001, //  0.001 is normal density
             inertia: Infinity,
-            frictionAir: 0.0015,
+            frictionAir: 0.003 / (2 * tech.betterFoam),
             dmg: 0, //damage on impact
-            damage: tech.foamDamage * 3 * (tech.isFastFoam ? 2.8 : 1) * (tech.isBulletTeleport ? 1.53 : 1), //damage done over time
+            damage: tech.foamDamage * 3 * (tech.isFastFoam ? 2.8 : 1) * (tech.isBulletTeleport ? 1.53 : 1) * (2 * tech.betterFoam), //damage done over time
             scale: 1 - 0.006 / tech.bulletsLastLonger * (tech.isFastFoam ? 1.65 : 1),
             classType: "bullet",
             collisionFilter: {
@@ -7267,17 +7270,17 @@ const b = {
             doStream() { },
             fireStream() {
                 const spread = (m.crouch ?
-                    0.04 * (Math.random() - 0.5) + 0.09 * Math.sin(m.cycle * 0.12) :
-                    0.23 * (Math.random() - 0.5) + 0.15 * Math.sin(m.cycle * 0.12)
+                    0.04 * (Math.random() - 0.5) + 0.09 * Math.sin(m.cycle * 0.24) :
+                    0.23 * (Math.random() - 0.5) + 0.15 * Math.sin(m.cycle * 0.24)
                 )
                 const radius = 5 + 8 * Math.random() + (tech.isAmmoFoamSize && this.ammo < 300) * 12
-                const SPEED = (m.crouch ? 1.2 : 1) * Math.max(2, 14 - radius * 0.25)
-                const dir = m.angle + 0.3 * (Math.random() - 0.5)
+                const SPEED = (m.crouch ? 1.2 : 1) * Math.max(2, 14 - radius * 0.25) * (1.5 * tech.betterFoam)
+                const dir = m.angle + 0.15 * (Math.random() - 0.5)
                 const velocity = { x: SPEED * Math.cos(dir), y: SPEED * Math.sin(dir) }
                 const position = { x: m.pos.x + 30 * Math.cos(m.angle), y: m.pos.y + 30 * Math.sin(m.angle) }
                 b.foam(position, Vector.rotate(velocity, spread), radius)
                 this.applyKnock(velocity)
-                m.fireCDcycle = m.cycle + Math.floor(1.5 * b.fireCDscale);
+                m.fireCDcycle = m.cycle + Math.floor(1.5 * b.fireCDscale) / (2 * tech.betterFoam);
             },
             doCharges() {
                 if (this.charge > 0) {
